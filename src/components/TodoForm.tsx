@@ -9,13 +9,43 @@ const TodoForm = () => {
             description: string,
             todoStatus: string
         }
-    
 
+            interface ErrorData {
+            title?: string,
+            description?: string
+        }
+    
+        //Formulärstates
         const [formData, setFormData] = useState<FormData>({title: "", description: "", todoStatus: "Ej Påbörjad"})
 
+        //Error-states
+        const [error, setError] = useState<ErrorData>({})
+        const validateInput = ((data: FormData) => {
+
+            const validationErrors: ErrorData = {};
+
+            if(!data.title) {
+                validationErrors.title = "Fyll i en titel";
+            } 
+
+            if(data.title.length < 3) {
+                validationErrors.title = "Titeln måste vara längre än 3 tecken";
+            }
+
+            if(data.description.length >200) {
+                validationErrors.title = "Beskrivningen får inte vara mer än 200 tecken";
+            }
+
+        })
+
+
+
+        
         const submitForm = ((event: any) => {
             event.preventDefault();
         })
+
+        const validationErrors = validateInput(formData);
 
 
     return (
