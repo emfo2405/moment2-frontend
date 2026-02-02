@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Item {
     title: string, 
@@ -10,19 +10,25 @@ function TodoList() {
 
     const [item, setItem] = useState<Item[] | [] >([]);
 
+    useEffect(() => {
+        getItems();
+    }, [])
+
     const getItems = async () => {
         try {
-            const resp = await fetch("https://myapi-project-38vj.onrender.com/api/todo")
+            const resp = await fetch("/api/todo")
 
+            console.log("Läser in data...")
             if(!resp.ok) {
                 throw Error;
             } else {
                 const data = await resp.json();
 
                 setItem(data);
+                console.log(data)
             }
-        } catch {
-
+        } catch(error) {
+            console.error("Något gick fel: ", error);
         }
     }
 
@@ -34,3 +40,5 @@ function TodoList() {
     </>
   )
 }
+
+export default TodoList
