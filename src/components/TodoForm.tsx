@@ -13,11 +13,14 @@ const TodoForm = () => {
 
         const [formData, setFormData] = useState<FormData>({title: "", description: "", todoStatus: "Ej Påbörjad"})
 
+        const submitForm = ((event: any) => {
+            event.preventDefault();
+        })
 
 
     return (
         
-        <form>
+        <form onSubmit={submitForm}>
             <label htmlFor="title">Titel</label>
             <input type="text" name="title" id="title" value={formData.title} 
             onChange={(event) => setFormData({...formData, title: event.target.value})}/>
@@ -33,6 +36,8 @@ const TodoForm = () => {
                 <option value="IN_PROGRESS">Pågående</option>
                 <option value="FINISHED">Avklarad</option>
             </select>
+
+            <input type="submit" value="Lägg till" />
 
         </form>
         
