@@ -36,7 +36,18 @@ function TodoList() {
 
   return (
     <>
- 
+        <div>
+            {
+                item.map((item) => (
+                    <div>
+                        <h2>{item.title}</h2>
+                        <p>{item.description}</p>
+                        <p>{item.status}</p>
+                    </div>
+                ))
+            }
+            
+        </div>
     </>
   )
 }
