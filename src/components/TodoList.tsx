@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 interface Item {
     title: string, 
     description: string,
-    status: string
+    status: string,
+    status_display: string
 }
 
 function TodoList() {
@@ -42,7 +43,7 @@ function TodoList() {
                     <div>
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
-                        <p>{item.status}</p>
+                        <p>{item.status_display}</p>
                     </div>
                 ))
             }
