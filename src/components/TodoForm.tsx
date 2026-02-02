@@ -36,6 +36,7 @@ const TodoForm = () => {
                 validationErrors.title = "Beskrivningen får inte vara mer än 200 tecken";
             }
 
+            return validationErrors;
         })
 
 
@@ -43,10 +44,18 @@ const TodoForm = () => {
         
         const submitForm = ((event: any) => {
             event.preventDefault();
+
+            const validationErrors = validateInput(formData);
+
+            if(Object.keys(validationErrors).length > 0) {
+                setError(validationErrors);
+            } else {
+                setError({});
+            }
+
         })
 
-        const validationErrors = validateInput(formData);
-
+      
 
     return (
         
@@ -55,9 +64,13 @@ const TodoForm = () => {
             <input type="text" name="title" id="title" value={formData.title} 
             onChange={(event) => setFormData({...formData, title: event.target.value})}/>
 
+            {error.title && <div>{error.title}</div>}
+
             <label htmlFor="description">Beskrivning</label>
             <textarea id="description" name="description" value={formData.description}
              onChange={(event) => setFormData({...formData, description: event.target.value})}/>
+
+            {error.description && <div>{error.description}</div>}
 
             <label htmlFor="status">Status</label>
             <select id="status" name="status" value={formData.todoStatus} 
