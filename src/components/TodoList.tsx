@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type {Item} from "../interface/Item";
 import DeleteButton from "./DeleteButton";
+import UpdateStatus from "./UpdateStatus";
 
 interface TodoListInput {
     item: Item[];
@@ -33,6 +34,8 @@ function TodoList({item, reading, error, getItems}: TodoListInput) {
                         <p>{item.status_display}</p>
 
                        <DeleteButton id={item.id} getItems={getItems}/>
+
+                       <UpdateStatus status={item.status} id={item.id} title={item.title} description={item.description} getItems={getItems}/>
 
                     </div>
                 ))
