@@ -62,26 +62,26 @@ const TodoForm  = ({addItem}: FormProps) => {
 
     return (
         
-        <form onSubmit={submitForm}>
-            <label htmlFor="title">Titel</label>
-            <input type="text" name="title" id="title" value={formData.title} 
-            onChange={(event) => setFormData({...formData, title: event.target.value})}/>
+        <form id="todoForm" onSubmit={submitForm}>
+            <label htmlFor="title">Titel</label><br />
+            <input type="text" name="title" id="title" value={formData.title}
+            onChange={(event) => setFormData({...formData, title: event.target.value})}/><br />
 
             {error.title && <div>{error.title}</div>}
 
-            <label htmlFor="description">Beskrivning</label>
+            <label htmlFor="description">Beskrivning</label><br />
             <textarea id="description" name="description" value={formData.description}
-             onChange={(event) => setFormData({...formData, description: event.target.value})}/>
+             onChange={(event) => setFormData({...formData, description: event.target.value})}/><br />
 
             {error.description && <div>{error.description}</div>}
 
-            <label htmlFor="status">Status</label>
+            <label htmlFor="status">Status</label><br />
             <select id="status" name="status" value={formData.status} 
              onChange={(event) => setFormData({...formData, status: event.target.value})}>
                 <option value="NOT_STARTED">Ej Påbörjad</option>
                 <option value="IN_PROGRESS">Pågående</option>
                 <option value="FINISHED">Avklarad</option>
-            </select>
+            </select><br />
 
             <input type="submit" value="Lägg till" />
 

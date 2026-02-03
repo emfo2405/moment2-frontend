@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type {Item} from "../interface/Item";
 import DeleteButton from "./DeleteButton";
 import UpdateStatus from "./UpdateStatus";
+import "./TodoList.css";
 
 interface TodoListInput {
     item: Item[];
@@ -17,7 +18,7 @@ function TodoList({item, reading, error, getItems}: TodoListInput) {
   return (
     <>
     <div>
-        <h1>Att göra lista</h1>
+        <h2>Att göra lista</h2>
         {
             error && <p>{error}</p>
         }
@@ -25,11 +26,11 @@ function TodoList({item, reading, error, getItems}: TodoListInput) {
             reading && <p>Läser in listan...</p>
         }
     </div>
-        <div>
+        <div id="todo">
             {
                 item.map((item) => (
                     <div key={item.id}>
-                        <h2>{item.title}</h2>
+                        <h3>{item.title}</h3>
                         <p>{item.description}</p>
                         <p>{item.status_display}</p>
 

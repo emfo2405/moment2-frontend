@@ -13,6 +13,7 @@ interface UpdateProps {
 function UpdateStatus({status, id, title, description, getItems} : UpdateProps) {
 const [formData, setFormData] = useState<FormDataItem>({title: title, description: description, status: status})
  const [error, setError] = useState<string | null>(null);
+ const [show, setShow] = useState<boolean>(false);
 
 //Funktion för att uppdatera status
      const updateItem = async (updateItem: FormDataItem) => {
@@ -43,8 +44,10 @@ const submitForm = ((event: any) => {
 })
     return (
         <>
+        <button onClick={() => setShow(choice => !choice)}>{show ? "Dölj" : "Ändra status"}</button>
 
-        <form onSubmit={submitForm}>
+{ show &&
+           <form onSubmit={submitForm}>
                 <label htmlFor="status">Status</label>
             <select id="status" name="status" value={formData.status} 
              onChange={(event) => setFormData({...formData, status: event.target.value})}>
@@ -55,7 +58,9 @@ const submitForm = ((event: any) => {
 
             <input type="submit" value="Uppdatera" />
 
-        </form>
+        </form> 
+}
+
         </>
     )
     

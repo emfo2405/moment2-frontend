@@ -71,6 +71,7 @@ function App() {
 
     return (
     <>
+    <h2>Lägg till i att-göra listan:</h2>
     <TodoForm addItem={addItem}/>
 
     <TodoList item={item} reading={reading} error={error} getItems={getItems}/>
