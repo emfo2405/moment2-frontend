@@ -14,10 +14,12 @@ function App() {
         getItems();
     }, [])
 
+    //Funktion för att hämta in alla element från api:et
         const getItems = async () => {
         try {
-            const resp = await fetch("/api/todo")
             setReading(true);
+            const resp = await fetch("/api/todo")
+            
             
             if(!resp.ok) {
                 throw Error;
@@ -37,9 +39,36 @@ function App() {
         }
     }
 
+    //Funktion för att posta en ny todo i listan
+            const addItem = async (newItem: Item) => {
+        try {
+            const resp = await fetch("/api/todo",  {
+              method: 'POST', 
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(newItem),
+            });
+            
+            
+            if(!resp.ok) {
+                throw Error;
+            } else {
+                const addedItem = await resp.json();
+
+                setItem((oldItems) => [...oldItems, addedItem]);
+            }
+        } catch(error) {
+            console.error("Något gick fel: ", error);
+
+            setError("Något gick fel med att lägga till...")
+        }
+    }
+
     return (
-          <>
+    <>
     <TodoForm/>
+
     <TodoList item={item} reading={reading} error={error} />
     </>
     )
