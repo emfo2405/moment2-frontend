@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 interface Item {
+    id: number,
     title: string, 
     description: string,
     status: string,
@@ -40,7 +41,7 @@ function TodoList() {
         <div>
             {
                 item.map((item) => (
-                    <div>
+                    <div key={item.id}>
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
                         <p>{item.status_display}</p>
