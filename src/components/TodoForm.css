@@ -1,24 +1,58 @@
 body {
-    background-color: beige;
+    background-color: rgb(227, 220, 203);
+    color:rgb(26, 17, 10)
 }
 
 #todoForm {
     width: 400px;
-    background-color: burlywood;
+    background-color: rgb(227, 220, 203);
     display: block;
     margin: 0 auto;
     padding-bottom: 20px;
     padding-top: 20px;
+    border: 3px solid rgb(112, 76, 46);
+    border-radius: 20px;
 }
 
-#todoForm input, textarea, select {
+.input {
     width: 80%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: burlywood;
+    background-color: rgb(227, 220, 203);
     border: none;
-    border-bottom: 3px solid brown;
+    border-bottom: 3px solid rgb(112, 76, 46);
 }
+
+.input option {
+    text-align: center;
+}
+
+#addButton {
+    width: 100px;
+    background-color: rgb(112, 76, 46);
+    border-radius: 10px;
+    padding: 7px;
+    margin: 10px;
+    color:rgb(227, 220, 203);
+    border: 2px solid rgb(61, 41, 24);
+    box-shadow: 2px 2px 0px rgb(61, 41, 24);
+    cursor: pointer;
+    transition: transform;
+}
+
+#addButton:hover {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: 0.5px 0.5px 2px rgb(61, 41, 24);
+}
+
+.error {
+    color: rgb(151, 12, 12);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-bottom: 10px;
+}
+
+
 
 
 
