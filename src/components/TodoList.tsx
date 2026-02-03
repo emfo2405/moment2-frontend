@@ -11,6 +11,9 @@ interface Item {
 function TodoList() {
 
     const [item, setItem] = useState<Item[] | [] >([]);
+    const [error, setError] = useState<string | null>(null);
+    const [reading, setReading] = useState<boolean>(false);
+
 
     useEffect(() => {
         getItems();
@@ -19,18 +22,23 @@ function TodoList() {
     const getItems = async () => {
         try {
             const resp = await fetch("/api/todo")
-
-            console.log("Läser in data...")
+            setReading(true);
+            
             if(!resp.ok) {
                 throw Error;
             } else {
                 const data = await resp.json();
 
                 setItem(data);
-                console.log(data)
+                setError(null);
+
             }
         } catch(error) {
             console.error("Något gick fel: ", error);
+
+            setError("Något gick fel när listan skulle läsas in...")
+        } finally {
+            setReading(false);
         }
     }
 
@@ -38,6 +46,15 @@ function TodoList() {
 
   return (
     <>
+    <div>
+        <h1>Att göra lista</h1>
+        {
+            error && <p>{error}</p>
+        }
+        {
+            reading && <p>Läser in listan...</p>
+        }
+    </div>
         <div>
             {
                 item.map((item) => (
