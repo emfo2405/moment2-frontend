@@ -68,11 +68,12 @@ function App() {
         }
     }
 
+
     return (
     <>
     <TodoForm addItem={addItem}/>
 
-    <TodoList item={item} reading={reading} error={error} />
+    <TodoList item={item} reading={reading} error={error} getItems={getItems}/>
     </>
     )
 

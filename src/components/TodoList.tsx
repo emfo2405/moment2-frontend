@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import type {Item} from "../interface/Item";
+import DeleteButton from "./DeleteButton";
 
 interface TodoListInput {
     item: Item[];
     reading: boolean;
     error: string | null;
+    getItems: () => Promise<void>;
 }
 
 
 
-function TodoList({item, reading, error}: TodoListInput) {
+function TodoList({item, reading, error, getItems}: TodoListInput) {
 
   return (
     <>
@@ -29,6 +31,9 @@ function TodoList({item, reading, error}: TodoListInput) {
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
                         <p>{item.status_display}</p>
+
+                       <DeleteButton id={item.id} getItems={getItems}/>
+
                     </div>
                 ))
             }
