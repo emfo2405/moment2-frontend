@@ -4,6 +4,7 @@ import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 import { useEffect, useState } from "react";
 import type {Item} from "./interface/Item";
+import type { FormDataItem } from './interface/FormDataItem';
 
 function App() {
         const [item, setItem] = useState<Item[] | [] >([]);
@@ -18,7 +19,7 @@ function App() {
         const getItems = async () => {
         try {
             setReading(true);
-            const resp = await fetch("/api/todo")
+            const resp = await fetch("/api/todo/")
             
             
             if(!resp.ok) {
@@ -40,23 +41,25 @@ function App() {
     }
 
     //Funktion för att posta en ny todo i listan
-            const addItem = async (newItem: Item) => {
+            const addItem = async (newItem: FormDataItem) => {
         try {
-            const resp = await fetch("/api/todo",  {
+            const resp = await fetch("/api/todo/",  {
               method: 'POST', 
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(newItem),
             });
+          
             
             
             if(!resp.ok) {
-                throw Error;
+                throw new Error("POST misslyckades");
             } else {
-                const addedItem = await resp.json();
+                const addedItem: Item = await resp.json();
 
                 setItem((oldItems) => [...oldItems, addedItem]);
+              
             }
         } catch(error) {
             console.error("Något gick fel: ", error);
@@ -67,7 +70,7 @@ function App() {
 
     return (
     <>
-    <TodoForm/>
+    <TodoForm addItem={addItem}/>
 
     <TodoList item={item} reading={reading} error={error} />
     </>

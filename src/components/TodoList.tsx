@@ -7,6 +7,8 @@ interface TodoListInput {
     error: string | null;
 }
 
+
+
 function TodoList({item, reading, error}: TodoListInput) {
 
   return (
@@ -33,7 +35,10 @@ function TodoList({item, reading, error}: TodoListInput) {
             
         </div>
     </>
+
   )
+  
 }
+
 
 export default TodoList

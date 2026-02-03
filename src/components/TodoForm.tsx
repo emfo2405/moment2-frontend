@@ -1,26 +1,26 @@
 import { useState } from "react";
 import "./TodoForm.css";
+import type { FormDataItem } from '../interface/FormDataItem';
 
-
-
-const TodoForm = () => {
-            interface FormData {
-            title: string,
-            description: string,
-            todoStatus: string
-        }
+//Skapa props från inskickat från app
+interface FormProps {
+    addItem: (newItem: FormDataItem) => Promise<void>;
+}
 
             interface ErrorData {
             title?: string,
             description?: string
         }
+
+const TodoForm  = ({addItem}: FormProps) => {
+
     
         //Formulärstates
-        const [formData, setFormData] = useState<FormData>({title: "", description: "", todoStatus: "Ej Påbörjad"})
+        const [formData, setFormData] = useState<FormDataItem>({title: "", description: "", status: "NOT_STARTED"})
 
         //Error-states
         const [error, setError] = useState<ErrorData>({})
-        const validateInput = ((data: FormData) => {
+        const validateInput = ((data: FormDataItem) => {
 
             const validationErrors: ErrorData = {};
 
@@ -51,6 +51,9 @@ const TodoForm = () => {
                 setError(validationErrors);
             } else {
                 setError({});
+
+                addItem(formData);
+                setFormData({title: "", description:"", status:"NOT_STARTED"});
             }
 
         })
@@ -73,8 +76,8 @@ const TodoForm = () => {
             {error.description && <div>{error.description}</div>}
 
             <label htmlFor="status">Status</label>
-            <select id="status" name="status" value={formData.todoStatus} 
-             onChange={(event) => setFormData({...formData, description: event.target.value})}>
+            <select id="status" name="status" value={formData.status} 
+             onChange={(event) => setFormData({...formData, status: event.target.value})}>
                 <option value="NOT_STARTED">Ej Påbörjad</option>
                 <option value="IN_PROGRESS">Pågående</option>
                 <option value="FINISHED">Avklarad</option>
