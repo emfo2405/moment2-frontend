@@ -5,6 +5,7 @@ import type { FormDataItem } from '../interface/FormDataItem';
 //Skapa props från inskickat från app
 interface FormProps {
     addItem: (newItem: FormDataItem) => Promise<void>;
+    confirmation: string | null;
 }
 
             interface ErrorData {
@@ -12,7 +13,7 @@ interface FormProps {
             description?: string
         }
 
-const TodoForm  = ({addItem}: FormProps) => {
+const TodoForm  = ({addItem, confirmation}: FormProps) => {
 
     
         //Formulärstates
@@ -85,6 +86,10 @@ const TodoForm  = ({addItem}: FormProps) => {
             </select><br />
             </div>
             <input id="addButton" type="submit" value="Lägg till" />
+
+        {
+            confirmation && <p id="confirmationMessage" >Nytt inlägg tillagt</p>
+        }
 
         </form>
         

@@ -10,6 +10,7 @@ function App() {
         const [item, setItem] = useState<Item[] | [] >([]);
         const [error, setError] = useState<string | null>(null);
         const [reading, setReading] = useState<boolean>(false);
+        const [confirmation, setConfirmation] = useState<string | null>(null);
 
             useEffect(() => {
         getItems();
@@ -54,11 +55,15 @@ function App() {
             
             
             if(!resp.ok) {
+                setConfirmation(null);
                 throw new Error("POST misslyckades");
+                
             } else {
                 const addedItem: Item = await resp.json();
 
                 setItem((oldItems) => [...oldItems, addedItem]);
+
+                setConfirmation("Ett nytt inlägg lades till");
               
             }
         } catch(error) {
@@ -73,7 +78,7 @@ function App() {
     <>
     <h1>Min att göra lista</h1>
     <h2>Lägg till:</h2>
-    <TodoForm addItem={addItem}/>
+    <TodoForm addItem={addItem} confirmation={confirmation}/>
 
     <TodoList item={item} reading={reading} error={error} getItems={getItems}/>
     </>

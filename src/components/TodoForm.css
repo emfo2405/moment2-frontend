@@ -69,6 +69,11 @@ select {
     margin-left: 30px;
 }
 
+#confirmationMessage {
+    text-align: center;
+    color: rgb(48, 94, 48);
+}
+
 @media (min-width: 1000px) {
     #todoForm {
         width: 600px;
@@ -76,6 +81,10 @@ select {
 
     #formContent {
     margin-left: 80px;
+}
+
+.error {
+    margin-left: 100px;
 }
 }
 
