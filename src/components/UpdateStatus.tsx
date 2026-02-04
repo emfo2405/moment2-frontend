@@ -8,10 +8,11 @@ interface UpdateProps {
     title: string,
     description: string,
     getItems: () => void;
+    API_URL: string
 }
  
 
-function UpdateStatus({status, id, title, description, getItems} : UpdateProps) {
+function UpdateStatus({status, id, title, description, getItems, API_URL} : UpdateProps) {
 const [formData, setFormData] = useState<FormDataItem>({title: title, description: description, status: status})
  const [error, setError] = useState<string | null>(null);
  const [show, setShow] = useState<boolean>(false);
@@ -19,7 +20,7 @@ const [formData, setFormData] = useState<FormDataItem>({title: title, descriptio
 //Funktion för att uppdatera status
      const updateItem = async (updateItem: FormDataItem) => {
         try {
-            const resp = await fetch(`/api/todo/${id}`,  {
+            const resp = await fetch(`${API_URL}/api/todo/${id}`,  {
               method: 'PATCH', 
               headers: {
                 "Content-Type": "application/json",

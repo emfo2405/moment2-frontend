@@ -12,6 +12,9 @@ function App() {
         const [reading, setReading] = useState<boolean>(false);
         const [confirmation, setConfirmation] = useState<string | null>(null);
 
+        //Skapa en variabel för att läsa in databas via netlify env-fil
+        const API_URL = import.meta.env.VITE_API_URL;
+
             useEffect(() => {
         getItems();
     }, [])
@@ -20,7 +23,7 @@ function App() {
         const getItems = async () => {
         try {
             setReading(true);
-            const resp = await fetch("/api/todo/")
+            const resp = await fetch(`${API_URL}/api/todo/`)
             
             
             if(!resp.ok) {
@@ -44,7 +47,7 @@ function App() {
     //Funktion för att posta en ny todo i listan
             const addItem = async (newItem: FormDataItem) => {
         try {
-            const resp = await fetch("/api/todo/",  {
+            const resp = await fetch(`${API_URL}/api/todo/`,  {
               method: 'POST', 
               headers: {
                 "Content-Type": "application/json",
@@ -80,7 +83,7 @@ function App() {
     <h2>Lägg till:</h2>
     <TodoForm addItem={addItem} confirmation={confirmation}/>
 
-    <TodoList item={item} reading={reading} error={error} getItems={getItems}/>
+    <TodoList item={item} reading={reading} error={error} getItems={getItems} API_URL={API_URL}/>
     </>
     )
 

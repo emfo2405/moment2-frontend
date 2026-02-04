@@ -4,9 +4,10 @@ import "./DeleteButton.css";
 interface ButtonProps {
     id: number;
     getItems: () => void;
+    API_URL: string;
 }
 
-function DeleteButton({id, getItems}: ButtonProps) {
+function DeleteButton({id, getItems, API_URL}: ButtonProps) {
 const [error, setError] = useState<string | null>(null);
 
 
@@ -14,7 +15,7 @@ const [error, setError] = useState<string | null>(null);
         //Funktion för att radera ett inlägg
      const deleteItem = async (id:number) => {
         try {
-            const resp = await fetch(`/api/todo/${id}`,  {
+            const resp = await fetch(`${API_URL}/api/todo/${id}`,  {
               method: 'DELETE', 
               headers: {
                 "Content-Type": "application/json",

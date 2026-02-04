@@ -9,11 +9,12 @@ interface TodoListInput {
     reading: boolean;
     error: string | null;
     getItems: () => Promise<void>;
+    API_URL: string;
 }
 
 
 
-function TodoList({item, reading, error, getItems}: TodoListInput) {
+function TodoList({item, reading, error, getItems, API_URL}: TodoListInput) {
 
   return (
     <>
@@ -34,8 +35,8 @@ function TodoList({item, reading, error, getItems}: TodoListInput) {
                         <h3>{item.title}</h3>
                         <p className="description">{item.description}</p>
                         
-                       <UpdateStatus status={item.status} id={item.id} title={item.title} description={item.description} getItems={getItems}/>
-                       <DeleteButton id={item.id} getItems={getItems}/>
+                       <UpdateStatus status={item.status} id={item.id} title={item.title} description={item.description} getItems={getItems} API_URL={API_URL}/>
+                       <DeleteButton id={item.id} getItems={getItems} API_URL={API_URL}/>
 
 
 
