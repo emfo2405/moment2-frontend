@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./DeleteButton.css";
 
 interface ButtonProps {
@@ -36,6 +36,10 @@ const [error, setError] = useState<string | null>(null);
   return (
     <>
         <button id="deleteButton" onClick={() => deleteItem(id)}>Radera</button>
+
+        {
+            error && <p id="errorMessage" >{error}</p>
+        }
     </>
 
   )
