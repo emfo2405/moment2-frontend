@@ -53,6 +53,10 @@
     border-radius: 10px;
 }
 
+#errorMessage {
+    text-align: center;
+}
+
 @media (min-width: 1000px) {
     #updateForm {
         margin-left: 175px;

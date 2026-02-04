@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type {FormDataItem} from "../interface/FormDataItem";
 import "./UpdateStatus.css";
 
@@ -58,6 +58,10 @@ const submitForm = ((event: any) => {
             </select><br />
 
             <input id="updateFormBtn" type="submit" value="Uppdatera" />
+
+        {
+            error && <p id="errorMessage" >{error}</p>
+        }
 
         </form> 
 }
