@@ -63,6 +63,7 @@ const TodoForm  = ({addItem}: FormProps) => {
     return (
         
         <form id="todoForm" onSubmit={submitForm}>
+            <div id="formContent">
             <label htmlFor="title">Titel</label><br />
             <input className="input" type="text" name="title" id="title" value={formData.title}
             onChange={(event) => setFormData({...formData, title: event.target.value})}/><br />
@@ -82,7 +83,7 @@ const TodoForm  = ({addItem}: FormProps) => {
                 <option value="IN_PROGRESS">Pågående</option>
                 <option value="FINISHED">Avklarad</option>
             </select><br />
-
+            </div>
             <input id="addButton" type="submit" value="Lägg till" />
 
         </form>

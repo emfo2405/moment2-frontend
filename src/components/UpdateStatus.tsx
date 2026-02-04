@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type {FormDataItem} from "../interface/FormDataItem";
+import "./UpdateStatus.css";
 
 interface UpdateProps {
     status: string,
@@ -44,19 +45,19 @@ const submitForm = ((event: any) => {
 })
     return (
         <>
-        <button onClick={() => setShow(choice => !choice)}>{show ? "Dölj" : "Ändra status"}</button>
+        <button id="updateButton" onClick={() => setShow(choice => !choice)}>{show ? "Dölj" : "Ändra status"}</button>
 
 { show &&
-           <form onSubmit={submitForm}>
-                <label htmlFor="status">Status</label>
-            <select id="status" name="status" value={formData.status} 
+           <form id="updateForm" onSubmit={submitForm}>
+                <label htmlFor="status">Status</label><br />
+            <select className="updateSelect" id="status" name="status" value={formData.status} 
              onChange={(event) => setFormData({...formData, status: event.target.value})}>
                 <option value="NOT_STARTED">Ej Påbörjad</option>
                 <option value="IN_PROGRESS">Pågående</option>
                 <option value="FINISHED">Avklarad</option>
-            </select>
+            </select><br />
 
-            <input type="submit" value="Uppdatera" />
+            <input id="updateFormBtn" type="submit" value="Uppdatera" />
 
         </form> 
 }

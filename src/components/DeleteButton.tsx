@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./DeleteButton.css";
 
 interface ButtonProps {
     id: number;
@@ -34,7 +35,7 @@ const [error, setError] = useState<string | null>(null);
 
   return (
     <>
-        <button onClick={() => deleteItem(id)}>Radera</button>
+        <button id="deleteButton" onClick={() => deleteItem(id)}>Radera</button>
     </>
 
   )

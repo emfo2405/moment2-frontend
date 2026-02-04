@@ -3,6 +3,10 @@ body {
     color:rgb(26, 17, 10)
 }
 
+h2, h1, h3 {
+    text-align: center;
+}
+
 #todoForm {
     width: 400px;
     background-color: rgb(227, 220, 203);
@@ -12,15 +16,25 @@ body {
     padding-top: 20px;
     border: 3px solid rgb(112, 76, 46);
     border-radius: 20px;
+    
+}
+
+#formContent {
+    margin-left: 50px;
 }
 
 .input {
     width: 80%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     background-color: rgb(227, 220, 203);
     border: none;
     border-bottom: 3px solid rgb(112, 76, 46);
+
+}
+
+select {
+    margin-left: 10px;
 }
 
 .input option {
@@ -38,6 +52,8 @@ body {
     box-shadow: 2px 2px 0px rgb(61, 41, 24);
     cursor: pointer;
     transition: transform;
+    display: block;
+    margin: 0 auto;
 }
 
 #addButton:hover {
@@ -49,7 +65,18 @@ body {
     color: rgb(151, 12, 12);
     text-decoration: underline;
     text-underline-offset: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+@media (min-width: 1000px) {
+    #todoForm {
+        width: 600px;
+    }
+
+    #formContent {
+    margin-left: 80px;
+}
 }
 
 

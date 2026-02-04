@@ -1,0 +1,54 @@
+#updateButton {
+    border: none;
+    background-color: rgb(234, 229, 217);
+    color: rgb(71, 47, 26);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#updateForm {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 125px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 2px solid rgb(71, 47, 26);
+       
+}
+
+#updateFormBtn {
+    width: 100px;
+    background-color: rgb(242, 212, 152);
+    border-radius: 10px;
+    padding: 7px;
+    margin: 10px;
+    color: rgb(24, 17, 8);
+    border: 2px solid rgb(61, 41, 24);
+    box-shadow: 2px 2px 0px rgb(61, 41, 24);
+    cursor: pointer;
+    transition: transform;
+    display: block;
+    margin: 0 auto;
+}
+
+#updateFormBtn:hover {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: 0.5px 0.5px 2px rgb(61, 41, 24);
+}
+
+.updateSelect {
+    cursor: pointer;
+    background-color:  rgb(227, 220, 203);
+    border: 2px solid rgb(61, 41, 24);
+    padding: 10px;
+    border-radius: 10px;
+}

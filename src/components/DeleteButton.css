@@ -1,0 +1,19 @@
+#deleteButton {
+    width: 100px;
+    background-color: rgb(176, 89, 67);
+    border-radius: 10px;
+    padding: 7px;
+    margin: 10px;
+    color: rgb(24, 17, 8);
+    border: 2px solid rgb(61, 41, 24);
+    box-shadow: 2px 2px 0px rgb(61, 41, 24);
+    cursor: pointer;
+    transition: transform;
+    display: block;
+    margin: 0 auto;
+}
+
+#deleteButton:hover {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: 0.5px 0.5px 2px rgb(61, 41, 24);
+}

@@ -20,23 +20,24 @@ function TodoList({item, reading, error, getItems}: TodoListInput) {
     <div>
         <h2>Att göra lista</h2>
         {
-            error && <p>{error}</p>
+            error && <p id="errorMessage" >{error}</p>
         }
         {
-            reading && <p>Läser in listan...</p>
+            reading && <p id="readingMessage" >Läser in listan...</p>
         }
     </div>
-        <div id="todo">
+        <div id="todoList">
             {
                 item.map((item) => (
-                    <div key={item.id}>
+                    <div className="todo" key={item.id}>
+                        <p className={`status status--${item.status}`}>{item.status_display}</p>
                         <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                        <p>{item.status_display}</p>
-
+                        <p className="description">{item.description}</p>
+                        
+                       <UpdateStatus status={item.status} id={item.id} title={item.title} description={item.description} getItems={getItems}/>
                        <DeleteButton id={item.id} getItems={getItems}/>
 
-                       <UpdateStatus status={item.status} id={item.id} title={item.title} description={item.description} getItems={getItems}/>
+
 
                     </div>
                 ))
